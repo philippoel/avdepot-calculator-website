@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+/* Design avdepot-calculator.de: dunkles Werkzeug. Nachtblau, Türkis als Bedienfarbe,
+   Space Grotesk für Text, JetBrains Mono für Zahlen. Bewusst anders als justavd.de. */
+@theme {
+  --font-sans: var(--font-grotesk), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: var(--font-jetbrains), ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-grund: #0d1420;
+  --color-panel: #151f2e;       /* Karten, Diagrammfläche */
+  --color-panel-hell: #1c2939;
+  --color-linie: #2a3a50;
+  --color-tinte: #f1f5f9;       /* Überschriften, große Zahlen */
+  --color-text: #cbd5e1;        /* Fließtext (12:1) */
+  --color-leise: #94a3b8;       /* Nebentext (7:1) */
+  --color-akzent: #2dd4bf;      /* Knöpfe (dunkle Schrift), Regler */
+  --color-akzent-dunkel: #5eead4;
+
+  /* Diagramm, geprüft auf #151f2e (Helligkeit, Farbschwäche, Kontrast) */
+  --color-reihe-eigen: #7290e8;
+  --color-reihe-zulagen: #c4861c;
+  --color-reihe-ertrag: #14a08f;
+
+  --radius-md: 0.5rem;
+  --radius-lg: 0.625rem;
+  --radius-xl: 0.875rem;
+}
+
+html { color-scheme: dark; scroll-behavior: smooth; }
+body { background: var(--color-grund); color: var(--color-text); }
+
+@layer base {
+  h1, h2, h3 { color: var(--color-tinte); text-wrap: balance; letter-spacing: -0.02em; }
+  p { text-wrap: pretty; }
+}
+.zahl, table { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+::selection { background: #134e4a; color: var(--color-tinte); }
+:focus-visible { outline: 2px solid var(--color-akzent); outline-offset: 2px; border-radius: 0.375rem; }
+input[type="range"] { accent-color: var(--color-akzent); }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
